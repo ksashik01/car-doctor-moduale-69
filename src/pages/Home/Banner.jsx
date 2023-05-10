@@ -30,7 +30,7 @@ const Banner = () => {
       </div>
 
     </div>
-  </div> 
+    </div> 
   <div id="slide2" className="carousel-item relative w-full">
     <img src={img2}className="w-full" />
     <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
