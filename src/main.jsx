@@ -10,6 +10,10 @@ import {
 } from "react-router-dom";
 import router from './Routes/Routes';
 
+
+
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
 
   <div className='max-w-7xl mx-auto'>
