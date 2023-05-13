@@ -5,7 +5,7 @@ import { AuthContext } from "../../providers/AuthProviders";
 
 const CheckOut = () => {
     const service = useLoaderData();
-    const {title,price} = service;
+    const {title,price,date} = service;
     const {user} = useContext(AuthContext)
 
     const handleBookService = event =>{
@@ -13,16 +13,30 @@ const CheckOut = () => {
             const form = event.target;
             const name = form.name.value;
             const date = form.date.value;
-            const email = user?.email;
+            const email = form.email.value;
 
-            const order ={
+            const booking ={
                     name,
                     date,
                     email
 
             }
 
-            console.log (order)
+            console.log (booking);
+
+            fetch('http://localhost:5000/bookings',{
+                method:'POST',
+                headers:{
+                        'content-type': 'application/json'
+                },
+
+                body:JSON.stringify(booking)
+
+            })
+            .then (res => res.json())
+            .then (data => {
+                console.log (data)
+            })
     }
 
     return (
@@ -49,13 +63,13 @@ const CheckOut = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="text" name="email" defaultValue={user?.email} placeholder="email" className="input input-bordered" />
+          <input type="text" name="email"  placeholder="email" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Date</span>
           </label>
-          <input type="date" name="date" className="input input-bordered" />
+          <input type="date" name="date" defaultValue={date} className="input input-bordered" />
          
         </div>
 
