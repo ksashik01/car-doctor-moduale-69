@@ -13,12 +13,14 @@ const CheckOut = () => {
             const form = event.target;
             const name = form.name.value;
             const date = form.date.value;
-            const email = form.email.value;
+            const email = user?.email;
 
             const booking ={
                     name,
                     date,
-                    email
+                    email,
+                    price
+                    
 
             }
 
@@ -35,7 +37,9 @@ const CheckOut = () => {
             })
             .then (res => res.json())
             .then (data => {
-                console.log (data)
+                console.log (data);
+
+                form.reset('')
             })
     }
 
@@ -63,7 +67,7 @@ const CheckOut = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="text" name="email"  placeholder="email" className="input input-bordered" />
+          <input type="text" name="email" defaultValue={user?.email}  placeholder="email" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
