@@ -5,7 +5,9 @@ import { AuthContext } from '../../providers/AuthProviders';
 
 const SignUp = () => {
 
-    const {createUser} = useContext(AuthContext)
+    const {createUser} = useContext(AuthContext);
+
+
 
     const handleSignUp = event =>{
         event.preventDefault();
@@ -18,7 +20,7 @@ const SignUp = () => {
         createUser (email, password)
         .then (result =>{
             const user = result.user;
-            console.log (user)
+           console.log (user)
         })
 
         .then (error => console.log (error))
@@ -67,6 +69,7 @@ const SignUp = () => {
         </div>
       </div>
       </form>
+      
       <p className='my-4 text-center'>Already Have an Account?</p>
       <Link className='text-orange-600 font-bold text-center' to="/login">
       Login Here
